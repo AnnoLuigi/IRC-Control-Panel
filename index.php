@@ -57,7 +57,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <form class="form-horizontal" id="form_members" role="form" action="send_formdata_newserver.php" method="POST">
+     <form class="form-horizontal" id="form_members" role="form" action="php/send_formdata_newserver.php" method="POST" >
  <div class="container">
     <form class="form-horizontal">
       <fieldset>
@@ -114,7 +114,7 @@
         <div class="form-group">
           <div class="col-lg-10 col-lg-offset-9" style="padding-left:34px;">
             <button type="reset" class="btn btn-default">Cancel</button>
-            <button type="submit" name="submit" id="submit" class="btn btn-primary">Save</button>
+            <button href="php/send_formdata_newserver.php" target="save" type="submit" name="submit" id="submit" class="btn btn-primary">Save</button>
           </div>
         </div>
       </fieldset>
@@ -136,11 +136,10 @@
       </thead>
   <tbody>
 <?php
-    $connect = mysql_connect("localhost","irc", "q1w2e3r4");
-    if (!$connect) {
+    include 'config.php'
+    if (!$conn) {
         die(mysql_error());
     }
-    mysql_select_db("irc_bot");
     $results = mysql_query("SELECT * FROM server_info");
     while($row = mysql_fetch_array($results)) {
     ?>
@@ -149,6 +148,7 @@
             <td><?php echo $row['server_ip']?></td>
             <td><?php echo $row['port']?></td>
             <td><?php echo $row['nick']?></td>
+            <td><a href="php/delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
         </tr>
 
     <?php
@@ -158,7 +158,6 @@
     </table>
   </div>
 </div>
-
   </body>
 
 <!-- <div class="panel panel-primary">
