@@ -40,7 +40,7 @@
         </h3>
       </div>
       <div class="panel-body">
-        <table  class="table table-striped table-hover">
+        <table id="serverdisplay" class="table table-striped table-hover">
           <thead>
             <tr>
               <td>Server
@@ -62,10 +62,10 @@ include 'php/config.php';
 while($row = mysql_fetch_array($data)) {
 ?>
             <tr class="<?php
-if ($row['connected'] = 1) {
+if ($row['connected'] == 1) {
     echo "success";
 } else {
-    echo "failure";
+    echo "danger";
 }
 ?>" >
               <td class="server_name">
@@ -97,6 +97,11 @@ if ($row['connected'] = 1) {
 ?>
           </tbody>
         </table>
+        <!-- <script>
+        $(document).ready(function(){
+            $('#serverdisplay').dataTable();
+        });
+        </script> -->
       </div>
     </div>
     <div class="container">

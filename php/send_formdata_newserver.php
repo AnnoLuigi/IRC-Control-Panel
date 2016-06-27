@@ -6,16 +6,7 @@ if (isset($_REQUEST['submit'])) {
     $server_name  = $_POST['server_name'];
     $server_ip    = $_POST['server_ip'];
     $port         = $_POST['port'];
-
-    if (strlen(use_ssl) == 0) {
-      $use_ssl = 0;
-      $use_ssl = $_POST['use_ssl'];
-    }
-    else
-    {
-      $use_ssl = $_POST['use_ssl'];
-    }
-
+    $use_ssl = $_POST['use_ssl'];
     $nick         = $_POST['nick'];
     $secondary    = $_POST['secondary'];
     $pass         = $_POST['pass'];
