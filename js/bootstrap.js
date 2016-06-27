@@ -4,7 +4,16 @@
  * Licensed under the MIT license
  */
 
+if (typeof jQuery === 'undefined') {
+  throw new Error('Bootstrap\'s JavaScript requires jQuery')
+}
 
++function ($) {
+  'use strict';
+  var version = $.fn.jquery.split(' ')[0].split('.')
+  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 2)) {
+    throw new Error('Bootstrap\'s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 3')
+  }
 }(jQuery);
 
 /* ========================================================================
@@ -15,65 +24,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
- var editor; // use a global for the submit and return data rendering in the examples
-
- $(document).ready(function() {
-     editor = new $.fn.dataTable.Editor( {
-         ajax: "../php/staff.php",
-         table: "#example",
-         fields: [ {
-                 label: "First name:",
-                 name: "first_name"
-             }, {
-                 label: "Last name:",
-                 name: "last_name"
-             }, {
-                 label: "Position:",
-                 name: "position"
-             }, {
-                 label: "Office:",
-                 name: "office"
-             }, {
-                 label: "Extension:",
-                 name: "extn"
-             }, {
-                 label: "Start date:",
-                 name: "start_date",
-                 type: 'datetime'
-             }, {
-                 label: "Salary:",
-                 name: "salary"
-             }
-         ]
-     } );
-
-     var table = $('#example').DataTable( {
-         lengthChange: false,
-         ajax: "../php/staff.php",
-         columns: [
-             { data: null, render: function ( data, type, row ) {
-                 // Combine the first and last names into a single table field
-                 return data.first_name+' '+data.last_name;
-             } },
-             { data: "position" },
-             { data: "office" },
-             { data: "extn" },
-             { data: "start_date" },
-             { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
-         ],
-         select: true
-     } );
-
-     // Display the buttons
-     new $.fn.dataTable.Buttons( table, [
-         { extend: "create", editor: editor },
-         { extend: "edit",   editor: editor },
-         { extend: "remove", editor: editor }
-     ] );
-
-     table.buttons().container()
-         .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
- } );
 
 +function ($) {
   'use strict';
