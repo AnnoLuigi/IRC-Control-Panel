@@ -6,7 +6,16 @@ if (isset($_REQUEST['submit'])) {
     $server_name  = $_POST['server_name'];
     $server_ip    = $_POST['server_ip'];
     $port         = $_POST['port'];
-    $use_ssl      = $_POST['use_ssl'];
+
+    if (strlen(use_ssl) == 0) {
+      $use_ssl = 0;
+      $use_ssl = $_POST['use_ssl'];
+    }
+    else
+    {
+      $use_ssl = $_POST['use_ssl'];
+    }
+
     $nick         = $_POST['nick'];
     $secondary    = $_POST['secondary'];
     $pass         = $_POST['pass'];
@@ -24,6 +33,5 @@ if (isset($_REQUEST['submit'])) {
         mysql_query($insqDbtb);
     }
 }
-
 header( "refresh:0;url=../index.php" );
 ?>
