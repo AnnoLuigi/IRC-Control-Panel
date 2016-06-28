@@ -13,8 +13,6 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
-/* MY CODE */
-
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -7050,3 +7048,12 @@ a.list-group-item-danger.active:focus {
 .panel-default > .panel-heading {
   background-color: #464545;
 }
+
+/* MY CODE */
+
+.modal-content {
+    padding: 20px;
+}
+.glyphicon {
+    padding: 9px;
+    }
