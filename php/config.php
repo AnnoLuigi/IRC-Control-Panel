@@ -1,11 +1,11 @@
 <?php
 
 // SQL Credentials
-$dbhost = 'localhost';
-$dbuser = 'irc';
-$dbpass = 'q1w2e3r4';
-$dbname = 'irc_bot';
-$primarytable = "server_info";
+$dbhost = '';
+$dbuser = '';
+$dbpass = '';
+$dbname = '';
+$primarytable = "";
 
 // Create server connection
 $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die('Error connecting to mysql');
