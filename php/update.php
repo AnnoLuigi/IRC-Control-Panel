@@ -9,10 +9,8 @@ include 'config.php';
         exit;
     }
 
-    mysql_query("DELETE FROM $primarytable WHERE id = '$id'")
+    mysql_query("UPDATE $primarytable SET $row['server_name'], $row['server_ip'], $row['port'], $row['ssl'], $row['secondary'], $row['server_name'], $row['pass'] WHERE id = '$id'")
     or die(mysql_error());
-
-
 
     header( "refresh:0;url=../index.php" );
 
