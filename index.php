@@ -1,37 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>IRC Management
-    </title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Home
-          </a>
-        </div>
-      </div>
-    </nav>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
-    </script>
-    <script src="js/bootstrap.js">
-    </script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/jqc-1.12.3/dt-1.10.12/datatables.min.js">
-    </script>
-    <script type="text/javascript" language="javascript" class="init">
-    </script>
-  </head>
+
+<head>
+  <?php
+  include 'header.php';
+  ?>
+</head>
+
   <body>
     <div class="container">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <a data-target="#newServer" data-toggle="modal">
-      <span class="glyphicon glyphicon-plus" style="float: right;">
+      <span class="glyphicon glyphicon-plus" id="new-server-icon">
       </span>
     </a>
     <div class="panel panel-primary">
@@ -58,7 +39,6 @@
           </thead>
           <tbody>
             <?php
-include 'php/config.php';
 while($row = mysql_fetch_array($data)) {
 ?>
             <tr class="<?php
@@ -81,14 +61,22 @@ if ($row['connected'] == 1) {
                 <?php echo $row['nick']?>
               </td>
               <td>
-                <?php echo $row['use_ssl']?>
+                 <?php
+    if ($row['use_ssl'] == 1) {
+        echo "true";
+    } else {
+        echo "false";
+    }
+    ?>
               </td>
               <td>
-                <a data-toggle="modal" href="#newServer" class="edit">Edit
+                <a data-toggle="modal" class="edit">
+                  <span class="glyphicon glyphicon-pencil" />
                 </a>
               </td>
               <td>
-                <a href="php/delete.php?id=<?php echo $row['id']; ?>">Delete
+                <a href="php/delete.php?id=<?php echo $row['id']; ?>">
+                  <span class="glyphicon glyphicon-remove" />
                 </a>
               </td>
             </tr>
@@ -97,11 +85,6 @@ if ($row['connected'] == 1) {
 ?>
           </tbody>
         </table>
-        <!-- <script>
-        $(document).ready(function(){
-            $('#serverdisplay').dataTable();
-        });
-        </script> -->
       </div>
     </div>
     <div class="container">
