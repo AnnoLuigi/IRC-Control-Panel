@@ -1,9 +1,19 @@
 <?php
-$dbhost = 'localhost';
-$dbuser = 'irc';
-$dbpass = 'q1w2e3r4';
+
+// SQL Credentials
+$dbhost = '';
+$dbuser = '';
+$dbpass = '';
+$dbname = '';
+$primarytable = "";
+
+// Create server connection
 $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die('Error connecting to mysql');
-$dbname = 'irc_bot';
+
+//Select database
 mysql_select_db($dbname);
-$data = mysql_query("SELECT * FROM server_info");
+
+// Initial data population
+$data = mysql_query("SELECT * FROM $primarytable");
+
 ?>
