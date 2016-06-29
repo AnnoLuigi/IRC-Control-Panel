@@ -1,9 +1,9 @@
 <?php
-$dbhost = 'localhost';
-$dbuser = 'irc';
-$dbpass = 'q1w2e3r4';
+$dbhost = '';
+$dbuser = '';
+$dbpass = '';
 $conn = mysql_connect($dbhost, $dbuser, $dbpass) or die('Error connecting to mysql');
-$dbname = 'irc_bot';
+$dbname = '';
 mysql_select_db($dbname);
 $data = mysql_query("SELECT * FROM server_info");
 ?>
